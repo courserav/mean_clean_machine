@@ -8,5 +8,10 @@ customerSearchBtn.addEventListener('click', (e)=>{
     let listItem = document.createElement("li")
     listItem.className = "list-group-item"
     listItem.textContent = customer
+    let customerListCount = customerList.getElementsByClassName("list-group-item")
+
     customerList.appendChild(listItem)
+    if (customerListCount.length > 10){
+        customerList.removeChild(customerList.firstChild)
+    }
 })
