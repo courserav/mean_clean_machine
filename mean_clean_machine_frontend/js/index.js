@@ -17,7 +17,7 @@ class Customer{
         self.last_name = lastName
     }
 
-    static getCustomers(searchValue, listItem){
+    static getCustomers(){
         fetch(CUSTOMER_URL)
         .then(response => response.json())
         .then(data => {
@@ -27,12 +27,7 @@ class Customer{
             }
         })
         .then(function(e){
-            for (let i = 0; i < customersArray.length; i++){
-                if (customersArray[i].first_name.toLowerCase().includes(searchValue) || customersArray[i].last_name.toLowerCase().includes(searchValue) || customersArray[i].email.toLowerCase().includes(searchValue) || customersArray[i].phone_number.includes(searchValue)){
-                    listItem.textContent = `Name: ${customersArray[i].first_name} ${customersArray[i].last_name} | Email: ${customersArray[i].email} | Phone#: ${customersArray[i].phone_number} `
-                    customerList.appendChild(listItem)
-                }
-            }
+                scrollCustomers("all")
         })
     }
 
@@ -84,13 +79,20 @@ cListRightBtn.addEventListener('click', (e)=>{
 
 function scrollCustomers(command){
     if (command == 'all'){
-
+        customersArray.sort(function(a, b){
+            return a.first_name - b.first_name
+        })
+        for (let i = 0; i < 10; i++){
+            let listItem = document.createElement("li")
+            listItem.textContent = `Name: ${customersArray[i].first_name} ${customersArray[i].last_name} | Email: ${customersArray[i].email} | Phone#: ${customersArray[i].phone_number} `
+            customerList.appendChild(listItem)
+        }
     }
     else if (command == 'left'){
 
     }
     else if (command == 'right'){
-        
+
     }
 }
 
@@ -98,15 +100,18 @@ customerSearchBtn.addEventListener('click', (e)=>{
     e.preventDefault()
  
     let searchValue = customerSearchBar.value //customer could be first name, last name, email or phone #
-    let listItem = document.createElement("li")
+
     listItem.className = "list-group-item"
     let customerListCount = customerList.getElementsByClassName("list-group-item")
-
     searchValue = searchValue.toLowerCase()
-
-    Customer.getCustomers(searchValue, listItem)
 
     if (customerListCount.length > 10){
         customerList.removeChild(customerList.firstChild)
     }
 })
+
+/* for (let i = 0; i < customersArray.length; i++) {
+    if (customersArray[i].first_name.toLowerCase().includes(searchValue) || customersArray[i].last_name.toLowerCase().includes(searchValue) || customersArray[i].email.toLowerCase().includes(searchValue) || customersArray[i].phone_number.includes(searchValue)) {
+        listItem.textContent = `Name: ${customersArray[i].first_name} ${customersArray[i].last_name} | Email: ${customersArray[i].email} | Phone#: ${customersArray[i].phone_number} `
+        customerList.appendChild(listItem)
+    } */
