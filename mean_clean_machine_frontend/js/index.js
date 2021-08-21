@@ -74,8 +74,24 @@ class Customer{
     }
 }
 
-function scrollCustomers(customersArray){
+cListLeftBtn.addEventListener('click', (e)=>{
+    scrollCustomers('left')
+})
 
+cListRightBtn.addEventListener('click', (e)=>{
+    scrollCustomers('right')
+})
+
+function scrollCustomers(command){
+    if (command == 'all'){
+
+    }
+    else if (command == 'left'){
+
+    }
+    else if (command == 'right'){
+        
+    }
 }
 
 customerSearchBtn.addEventListener('click', (e)=>{
