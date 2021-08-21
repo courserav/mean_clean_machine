@@ -7,6 +7,8 @@
         <title>Mean Clean Machine</title>
     </head>
     <body>
+        <div class="parent-container d-flex" id="row-all-three-boxes">
+
         <div class="container" id="customer-box">
             <div class="row" id="row-customer-box-top">
                 <header>Customers</header>
@@ -29,6 +31,14 @@
 
                 </ul>
             </div>
+            <div class="row justify-content-start" id="row-customer-box-list-btns">
+                <div class="col-4" id="col-customer-list-btn-left" >
+                    <button class="btn btn-primary w-100" id="customer-list-btn-left">←</button>
+                </div>
+                <div class="col-4" id="col-customer-list-btn-right">
+                    <button class="btn btn-primary w-100" id="customer-list-btn-right">→</button>
+                </div>
+            </div>
         </div>
 
         <div class="container" id="main-box">
@@ -39,6 +49,7 @@
 
         </div>
 
+        </div>
 
         <script src="js/index.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>

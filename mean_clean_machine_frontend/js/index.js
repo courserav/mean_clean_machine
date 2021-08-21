@@ -4,6 +4,8 @@ const CUSTOMER_URL = `${BASE_URL}/customers`
 let customerSearchBar = document.getElementById("customer-search-bar")
 const customerSearchBtn = document.getElementById("customer-search-btn")
 let customerList = document.getElementById("customer-list")
+const cListLeftBtn = document.getElementById("customer-list-btn-left")
+const cListRightBtn = document.getElementById("customer-list-btn-right")
 let customersArray = []
 
 function createCustomer(){
@@ -70,6 +72,10 @@ class Customer{
     changePhone(newPhone){
         self.phone_number = newPhone
     }
+}
+
+function scrollCustomers(customersArray){
+
 }
 
 customerSearchBtn.addEventListener('click', (e)=>{
