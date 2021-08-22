@@ -6,15 +6,15 @@ const customerSearchBtn = document.getElementById("customer-search-btn")
 let customerList = document.getElementById("customer-list")
 const cListLeftBtn = document.getElementById("customer-list-btn-left")
 const cListRightBtn = document.getElementById("customer-list-btn-right")
+let placeHolder = 0
 let customersArray = []
 
-function createCustomer(){
-
-}
-
 class Customer{
-    constructor(lastName){
-        self.last_name = lastName
+    constructor(firstName, lastName, email, phone){
+        this.first_name = firstName
+        this.last_name = lastName
+        this.email = email
+        this.phone_number = phone
     }
 
     static getCustomers(){
@@ -23,8 +23,10 @@ class Customer{
         .then(data => {
             customersArray = []
             for (let i = 0; i < data.length; i++){
-                customersArray.push(data[i])
+                let newCustomer = new Customer(data[i].first_name, data[i].last_name, data[i].email, data[i].phone_number)
+                customersArray.push(newCustomer)
             }
+            console.log(customersArray)
         })
         .then(function(e){
                 scrollCustomers("all")
@@ -38,7 +40,7 @@ class Customer{
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(self)
+            body: JSON.stringify(this)
         })
         .then(response => response.json())
     }
@@ -50,22 +52,22 @@ class Customer{
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(self)
+            body: JSON.stringify(this)
         })
         .then(response => response.json())
     }
 
     changeName(firstName, lastName){
-        self.first_name = firstName
-        self.last_name = lastName
+        this.first_name = firstName
+        this.last_name = lastName
     }
 
     changeEmail(newEmail){
-        self.email = newEmail
+        this.email = newEmail
     }
 
     changePhone(newPhone){
-        self.phone_number = newPhone
+        this.phone_number = newPhone
     }
 }
 
@@ -77,22 +79,35 @@ cListRightBtn.addEventListener('click', (e)=>{
     scrollCustomers('right')
 })
 
+function updateList(placeHolder){
+    while (customerList.firstChild){
+        customerList.removeChild(customerList.lastChild)
+    }
+    for (let i = placeHolder; i < (placeHolder + 10); i++){
+        let listItem = document.createElement("li")
+        listItem.className = "list-group-item"
+        listItem.textContent = `Name: ${customersArray[i].first_name} ${customersArray[i].last_name} | Email: ${customersArray[i].email} | Phone#: ${customersArray[i].phone_number} `
+        customerList.appendChild(listItem)
+    }
+}
+
 function scrollCustomers(command){
-    if (command == 'all'){
+ 
+    if (command === 'all'){
         customersArray.sort(function(a, b){
-            return a.first_name - b.first_name
+            if (a.last_name < b.last_name){ return -1 }
+            if (a.last_name > b.last_name){ return 1 }
+            return 0
         })
-        for (let i = 0; i < 10; i++){
-            let listItem = document.createElement("li")
-            listItem.textContent = `Name: ${customersArray[i].first_name} ${customersArray[i].last_name} | Email: ${customersArray[i].email} | Phone#: ${customersArray[i].phone_number} `
-            customerList.appendChild(listItem)
-        }
+        updateList(0)
     }
-    else if (command == 'left'){
-
+    else if (command == 'left' && placeHolder >= 10){
+        placeHolder -= 10
+        updateList(placeHolder)
     }
-    else if (command == 'right'){
-
+    else if (command == 'right' && placeHolder < customersArray.length){
+        placeHolder += 10
+        updateList(placeHolder)
     }
 }
 
@@ -104,10 +119,6 @@ customerSearchBtn.addEventListener('click', (e)=>{
     listItem.className = "list-group-item"
     let customerListCount = customerList.getElementsByClassName("list-group-item")
     searchValue = searchValue.toLowerCase()
-
-    if (customerListCount.length > 10){
-        customerList.removeChild(customerList.firstChild)
-    }
 })
 
 /* for (let i = 0; i < customersArray.length; i++) {

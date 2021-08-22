@@ -8,6 +8,13 @@
     align-items: center;
 }
 
+#customer-list{
+    list-style-type: none;
+    padding-top: 10px;
+    align-content: flex-end;
+}
+
 #row-customer-box-list-btns{
     padding: 10px;
 }
+
