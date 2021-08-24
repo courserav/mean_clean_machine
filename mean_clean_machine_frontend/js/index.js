@@ -3,7 +3,9 @@ const CUSTOMER_URL = `${BASE_URL}/customers`
 
 let customerSearchBar = document.getElementById("customer-search-bar")
 const customerSearchBtn = document.getElementById("customer-search-btn")
+const customerAddBtn = document.getElementById("customer-add-btn")
 let customerList = document.getElementById("customer-list")
+let customerListCount = customerList.getElementsByClassName("list-group-item")
 const cListLeftBtn = document.getElementById("customer-list-btn-left")
 const cListRightBtn = document.getElementById("customer-list-btn-right")
 let placeHolder = 0
@@ -26,10 +28,9 @@ class Customer{
                 let newCustomer = new Customer(data[i].first_name, data[i].last_name, data[i].email, data[i].phone_number)
                 customersArray.push(newCustomer)
             }
-            console.log(customersArray)
         })
         .then(function(e){
-                scrollCustomers("all")
+                scrollCustomers("*all")
         })
     }
 
@@ -72,11 +73,11 @@ class Customer{
 }
 
 cListLeftBtn.addEventListener('click', (e)=>{
-    scrollCustomers('left')
+    scrollCustomers('*left')
 })
 
 cListRightBtn.addEventListener('click', (e)=>{
-    scrollCustomers('right')
+    scrollCustomers('*right')
 })
 
 function updateList(placeHolder){
@@ -84,16 +85,18 @@ function updateList(placeHolder){
         customerList.removeChild(customerList.lastChild)
     }
     for (let i = placeHolder; i < (placeHolder + 10); i++){
+        if (customersArray[i] != undefined){
         let listItem = document.createElement("li")
         listItem.className = "list-group-item"
         listItem.textContent = `Name: ${customersArray[i].first_name} ${customersArray[i].last_name} | Email: ${customersArray[i].email} | Phone#: ${customersArray[i].phone_number} `
         customerList.appendChild(listItem)
+        }
     }
 }
 
 function scrollCustomers(command){
  
-    if (command === 'all'){
+    if (command === '*all'){
         customersArray.sort(function(a, b){
             if (a.last_name < b.last_name){ return -1 }
             if (a.last_name > b.last_name){ return 1 }
@@ -101,28 +104,29 @@ function scrollCustomers(command){
         })
         updateList(0)
     }
-    else if (command == 'left' && placeHolder >= 10){
+    else if (command === '*left' && placeHolder >= 10){
         placeHolder -= 10
         updateList(placeHolder)
     }
-    else if (command == 'right' && placeHolder < customersArray.length){
+    else if ((command === '*right') && (placeHolder < customersArray.length) && ((customersArray.length - placeHolder) >= 10)){
         placeHolder += 10
         updateList(placeHolder)
+    }
+    else{
+        customersArray.sort(function(a, b){
+            return b.last_name.includes(command) - a.last_name.includes(command)
+        })
+        updateList(0)
     }
 }
 
 customerSearchBtn.addEventListener('click', (e)=>{
-    e.preventDefault()
- 
-    let searchValue = customerSearchBar.value //customer could be first name, last name, email or phone #
-
-    listItem.className = "list-group-item"
-    let customerListCount = customerList.getElementsByClassName("list-group-item")
-    searchValue = searchValue.toLowerCase()
+    let searchValue = customerSearchBar.value //value could be first name, last name, email or phone #
+    scrollCustomers(searchValue)
 })
 
-/* for (let i = 0; i < customersArray.length; i++) {
-    if (customersArray[i].first_name.toLowerCase().includes(searchValue) || customersArray[i].last_name.toLowerCase().includes(searchValue) || customersArray[i].email.toLowerCase().includes(searchValue) || customersArray[i].phone_number.includes(searchValue)) {
-        listItem.textContent = `Name: ${customersArray[i].first_name} ${customersArray[i].last_name} | Email: ${customersArray[i].email} | Phone#: ${customersArray[i].phone_number} `
-        customerList.appendChild(listItem)
-    } */
+customerAddBtn.addEventListener('click', (e)=>{
+    e.preventDefault()
+
+
+})

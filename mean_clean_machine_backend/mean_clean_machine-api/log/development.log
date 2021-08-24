@@ -1120,3 +1120,386 @@ Processing by CustomersController#index as */*
 Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 2626)
 
 
+Started GET "/customers" for ::1 at 2021-08-24 04:14:04 -0400
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (5.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 74ms (Views: 0.3ms | ActiveRecord: 7.6ms | Allocations: 10089)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 04:19:52 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 2644)
+
+
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.7ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Ricky"], ["last_name", "Spanish"], ["email", "rickyspan1sh@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 08:28:29.431428"], ["updated_at", "2021-08-24 08:28:29.431428"]]
+  [1m[36mTRANSACTION (123.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Matilda"], ["last_name", "Woormwood"], ["email", "psychick@yahoo.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 08:28:29.574578"], ["updated_at", "2021-08-24 08:28:29.574578"]]
+  [1m[36mTRANSACTION (180.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Pitoo"], ["email", "secondpit@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 08:28:29.773174"], ["updated_at", "2021-08-24 08:28:29.773174"]]
+  [1m[36mTRANSACTION (172.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.5ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Pit"], ["email", "firstpit@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 08:28:29.964139"], ["updated_at", "2021-08-24 08:28:29.964139"]]
+  [1m[36mTRANSACTION (175.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.0ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Reggie"], ["last_name", "Rocket"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:30.167345"], ["updated_at", "2021-08-24 08:28:30.167345"]]
+  [1m[36mTRANSACTION (127.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.7ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Otto"], ["last_name", "Rocket"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:30.319166"], ["updated_at", "2021-08-24 08:28:30.319166"]]
+  [1m[36mTRANSACTION (173.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Raymundo"], ["last_name", "Rocket"], ["email", "daddyrocket@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 08:28:30.510628"], ["updated_at", "2021-08-24 08:28:30.510628"]]
+  [1m[36mTRANSACTION (166.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Ash"], ["last_name", "Ketchum"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:30.701096"], ["updated_at", "2021-08-24 08:28:30.701096"]]
+  [1m[36mTRANSACTION (206.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.6ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Bernard"], ["last_name", "Sanders"], ["email", "icouldhavebeenpresidentifthedemocratsdidntcannabalizeme@whitehouse.gov"], ["phone_number", ""], ["created_at", "2021-08-24 08:28:30.927917"], ["updated_at", "2021-08-24 08:28:30.927917"]]
+  [1m[36mTRANSACTION (121.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Donald"], ["last_name", "Garison"], ["email", "yuge@trumpu.edu"], ["phone_number", ""], ["created_at", "2021-08-24 08:28:31.066144"], ["updated_at", "2021-08-24 08:28:31.066144"]]
+  [1m[36mTRANSACTION (112.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.3ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "test"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:31.200887"], ["updated_at", "2021-08-24 08:28:31.200887"]]
+  [1m[36mTRANSACTION (115.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Bubbles"], ["last_name", "n/a"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:31.334338"], ["updated_at", "2021-08-24 08:28:31.334338"]]
+  [1m[36mTRANSACTION (412.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (2.6ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "LastPlaceHolder"], ["last_name", "Z"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:31.763915"], ["updated_at", "2021-08-24 08:28:31.763915"]]
+  [1m[36mTRANSACTION (109.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Wave"], ["email", "wave@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 08:28:31.899812"], ["updated_at", "2021-08-24 08:28:31.899812"]]
+  [1m[36mTRANSACTION (105.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Mountain"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:32.024890"], ["updated_at", "2021-08-24 08:28:32.024890"]]
+  [1m[36mTRANSACTION (114.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Inferno"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:32.159116"], ["updated_at", "2021-08-24 08:28:32.159116"]]
+  [1m[36mTRANSACTION (118.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Sky"], ["email", "daddyrocket@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 08:28:32.295874"], ["updated_at", "2021-08-24 08:28:32.295874"]]
+  [1m[36mTRANSACTION (127.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.4ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Kitty"], ["last_name", "Land"], ["email", "kittylandlovecenter@kllc.com"], ["phone_number", ""], ["created_at", "2021-08-24 08:28:32.442441"], ["updated_at", "2021-08-24 08:28:32.442441"]]
+  [1m[36mTRANSACTION (108.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Feature"], ["email", "the_feature@gmail.com"], ["phone_number", ""], ["created_at", "2021-08-24 08:28:32.571306"], ["updated_at", "2021-08-24 08:28:32.571306"]]
+  [1m[36mTRANSACTION (179.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.7ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Shine"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:32.768042"], ["updated_at", "2021-08-24 08:28:32.768042"]]
+  [1m[36mTRANSACTION (111.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.7ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "test2"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:32.903146"], ["updated_at", "2021-08-24 08:28:32.903146"]]
+  [1m[36mTRANSACTION (171.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Stand"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 08:28:33.099257"], ["updated_at", "2021-08-24 08:28:33.099257"]]
+  [1m[36mTRANSACTION (132.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Robot"], ["last_name", "Jones"], ["email", "home_address@gmail.com"], ["phone_number", ""], ["created_at", "2021-08-24 08:28:33.253672"], ["updated_at", "2021-08-24 08:28:33.253672"]]
+  [1m[36mTRANSACTION (173.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/customers" for ::1 at 2021-08-24 06:04:00 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (1.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 57ms (Views: 0.4ms | ActiveRecord: 2.8ms | Allocations: 13565)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:04:06 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (1.4ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 75ms (Views: 0.9ms | ActiveRecord: 1.4ms | Allocations: 6121)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:05:37 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 28ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 6121)
+
+
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mCustomer Destroy (361.9ms)[0m  [1m[31mDELETE FROM "customers"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.1ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Ricky"], ["last_name", "Spanish"], ["email", "rickyspan1sh@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 10:08:31.704415"], ["updated_at", "2021-08-24 10:08:31.704415"]]
+  [1m[36mTRANSACTION (123.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Matilda"], ["last_name", "Woormwood"], ["email", "psychick@yahoo.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 10:08:31.849929"], ["updated_at", "2021-08-24 10:08:31.849929"]]
+  [1m[36mTRANSACTION (129.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.2ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Pitoo"], ["email", "secondpit@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 10:08:31.998413"], ["updated_at", "2021-08-24 10:08:31.998413"]]
+  [1m[36mTRANSACTION (155.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Pit"], ["email", "firstpit@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 10:08:32.175685"], ["updated_at", "2021-08-24 10:08:32.175685"]]
+  [1m[36mTRANSACTION (180.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Reggie"], ["last_name", "Rocket"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:32.377012"], ["updated_at", "2021-08-24 10:08:32.377012"]]
+  [1m[36mTRANSACTION (187.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Otto"], ["last_name", "Rocket"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:32.591978"], ["updated_at", "2021-08-24 10:08:32.591978"]]
+  [1m[36mTRANSACTION (162.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Raymundo"], ["last_name", "Rocket"], ["email", "daddyrocket@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 10:08:32.775308"], ["updated_at", "2021-08-24 10:08:32.775308"]]
+  [1m[36mTRANSACTION (107.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Ash"], ["last_name", "Ketchum"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:32.903680"], ["updated_at", "2021-08-24 10:08:32.903680"]]
+  [1m[36mTRANSACTION (178.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.2ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Bernard"], ["last_name", "Sanders"], ["email", "icouldhavebeenpresidentifthedemocratsdidntcannabalizeme@whitehouse.gov"], ["phone_number", ""], ["created_at", "2021-08-24 10:08:33.101793"], ["updated_at", "2021-08-24 10:08:33.101793"]]
+  [1m[36mTRANSACTION (162.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Donald"], ["last_name", "Garison"], ["email", "yuge@trumpu.edu"], ["phone_number", ""], ["created_at", "2021-08-24 10:08:33.288003"], ["updated_at", "2021-08-24 10:08:33.288003"]]
+  [1m[36mTRANSACTION (110.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.7ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "test"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:33.416448"], ["updated_at", "2021-08-24 10:08:33.416448"]]
+  [1m[36mTRANSACTION (158.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.7ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Bubbles"], ["last_name", "n/a"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:33.593339"], ["updated_at", "2021-08-24 10:08:33.593339"]]
+  [1m[36mTRANSACTION (162.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "LastPlaceHolder"], ["last_name", "Z"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:33.776571"], ["updated_at", "2021-08-24 10:08:33.776571"]]
+  [1m[36mTRANSACTION (107.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.6ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Wave"], ["email", "wave@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 10:08:33.909577"], ["updated_at", "2021-08-24 10:08:33.909577"]]
+  [1m[36mTRANSACTION (131.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.7ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Mountain"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:34.062237"], ["updated_at", "2021-08-24 10:08:34.062237"]]
+  [1m[36mTRANSACTION (163.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (2.5ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Inferno"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:34.251813"], ["updated_at", "2021-08-24 10:08:34.251813"]]
+  [1m[36mTRANSACTION (125.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.7ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Sky"], ["email", "daddyrocket@aol.com"], ["phone_number", "555-555-5555"], ["created_at", "2021-08-24 10:08:34.402693"], ["updated_at", "2021-08-24 10:08:34.402693"]]
+  [1m[36mTRANSACTION (178.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.8ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Kitty"], ["last_name", "Land"], ["email", "kittylandlovecenter@kllc.com"], ["phone_number", ""], ["created_at", "2021-08-24 10:08:34.599695"], ["updated_at", "2021-08-24 10:08:34.599695"]]
+  [1m[36mTRANSACTION (126.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.1ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Feature"], ["email", "the_feature@gmail.com"], ["phone_number", ""], ["created_at", "2021-08-24 10:08:34.742949"], ["updated_at", "2021-08-24 10:08:34.742949"]]
+  [1m[36mTRANSACTION (179.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.7ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Shine"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:34.946630"], ["updated_at", "2021-08-24 10:08:34.946630"]]
+  [1m[36mTRANSACTION (126.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "test2"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:35.096405"], ["updated_at", "2021-08-24 10:08:35.096405"]]
+  [1m[36mTRANSACTION (176.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (0.9ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", ""], ["last_name", "Stand"], ["email", ""], ["phone_number", ""], ["created_at", "2021-08-24 10:08:35.297268"], ["updated_at", "2021-08-24 10:08:35.297268"]]
+  [1m[36mTRANSACTION (223.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCustomer Create (1.0ms)[0m  [1m[32mINSERT INTO "customers" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["first_name", "Robot"], ["last_name", "Jones"], ["email", "home_address@gmail.com"], ["phone_number", ""], ["created_at", "2021-08-24 10:08:35.579090"], ["updated_at", "2021-08-24 10:08:35.579090"]]
+  [1m[36mTRANSACTION (172.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/customers" for ::1 at 2021-08-24 06:09:25 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 42ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 11450)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:10:31 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 4005)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:13:48 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 4005)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:17:45 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (1.0ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 28ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 4005)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:19:09 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 32ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 4005)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:20:22 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 25ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:20:31 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 25ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:23:02 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 36ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:23:47 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:24:23 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (8.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 43ms (Views: 0.3ms | ActiveRecord: 8.1ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:25:31 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:31:27 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 39ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 4496)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:46:45 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (1.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 36ms (Views: 0.5ms | ActiveRecord: 2.7ms | Allocations: 4496)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:47:14 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:52:39 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 102ms (Views: 0.7ms | ActiveRecord: 2.3ms | Allocations: 4497)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:52:59 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (1.0ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 24ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:53:59 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 06:59:43 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 4495)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 07:00:41 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 30ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 07:03:40 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (1.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 31ms (Views: 0.4ms | ActiveRecord: 1.6ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 07:04:21 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 07:07:57 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 07:08:52 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 07:10:24 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 40ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 07:12:53 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.4ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 07:15:19 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (1.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 26ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-24 07:20:13 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (1.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 3987)
+
+
