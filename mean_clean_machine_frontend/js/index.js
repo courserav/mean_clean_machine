@@ -9,24 +9,25 @@ let customerListCount = document.getElementsByClassName("list-group-item")
 const cListLeftBtn = document.getElementById("customer-list-btn-left")
 const cListRightBtn = document.getElementById("customer-list-btn-right")
 const mainBox = document.getElementById("main-box")
+const thirdBox = document.getElementById("third-box")
 let placeHolder = 0
 let customersArray = []
 
 class Customer{
-    constructor(firstName, lastName, email, phone){
+    constructor(id, firstName, lastName, email, phone){
+        this.id = id
         this.first_name = firstName
         this.last_name = lastName
         this.email = email
         this.phone_number = phone
     }
-
     static getCustomers(){
         fetch(CUSTOMER_URL)
         .then(response => response.json())
         .then(data => {
             customersArray = []
             for (let i = 0; i < data.length; i++){
-                let newCustomer = new Customer(data[i].first_name, data[i].last_name, data[i].email, data[i].phone_number)
+                let newCustomer = new Customer(data[i].id, data[i].first_name, data[i].last_name, data[i].email, data[i].phone_number)
                 customersArray.push(newCustomer)
             }
         })
@@ -34,7 +35,6 @@ class Customer{
                 scrollCustomers("*all")
         })
     }
-
     postCustomer(){
         fetch(CUSTOMER_URL, {
             method: 'POST',
@@ -46,7 +46,6 @@ class Customer{
         })
         .then(response => response.json())
     }
-
     updateCustomer(){
         fetch(CUSTOMER_URL, {
             method: 'PUT',
@@ -58,27 +57,47 @@ class Customer{
         })
         .then(response => response.json())
     }
-
     changeName(firstName, lastName){
         this.first_name = firstName
         this.last_name = lastName
     }
-
     changeEmail(newEmail){
         this.email = newEmail
     }
-
     changePhone(newPhone){
         this.phone_number = newPhone
     }
     openCustomer(){
         clearDiv(mainBox)
+        clearDiv(thirdBox)
         let customerDiv = document.createElement("div")
         customerDiv.textContent = this.first_name + " " + this.last_name
+        
         mainBox.appendChild(customerDiv)
     }
 }
 
+class Order{
+    constructor(id, customer_id, price){
+        this.id = id
+        this.customer_id = customer_id
+        this.price = price
+    }
+    static getOrders(customer){
+        fetch(`${BASE_URL}/${customer.id}/orders`)
+        .then(response => response.json())
+        .then(data => {
+            let customerOrders = data.map(dbOrder => {
+                return new Order(dbOrder.id, dbOrder.customer_id, dbOrder.price) 
+            })
+            return customerOrders
+        })
+    }
+}
+
+class Item{
+
+}
 
 cListLeftBtn.addEventListener('click', (e)=>{
     scrollCustomers('*left')
@@ -104,6 +123,7 @@ function updateList(placeHolder){
         listItem.value = customersArray[i]
         listItem.addEventListener('click', (e)=>{
             listItem.value.openCustomer()
+            listItem.className += " list-group-item-active"
         })
         listItem.textContent = `Name: ${customersArray[i].first_name} ${customersArray[i].last_name} | Email: ${customersArray[i].email} | Phone#: ${customersArray[i].phone_number} `
         customerList.appendChild(listItem)
