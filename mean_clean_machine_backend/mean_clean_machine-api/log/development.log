@@ -1980,3 +1980,36 @@ Processing by CustomersController#index as */*
 Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 3987)
 
 
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrders (20210828062119)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "customer_id" varchar, "price" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210828062119"]]
+  [1m[36mTRANSACTION (202.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeColumn (20210828083140)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aitems" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "price" varchar DEFAULT NULL, "category" varchar DEFAULT NULL, "type" varchar DEFAULT NULL, "department" varchar DEFAULT NULL, "sku" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "aitems" ("id","name","price","category","type","department","sku","created_at","updated_at")
+                     SELECT "id","name","price","category","type","department","sku","created_at","updated_at" FROM "items"[0m
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE "items"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "items" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "price" integer DEFAULT NULL, "category" varchar DEFAULT NULL, "type" varchar DEFAULT NULL, "department" varchar DEFAULT NULL, "sku" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "items" ("id","name","price","category","type","department","sku","created_at","updated_at")
+                     SELECT "id","name","price","category","type","department","sku","created_at","updated_at" FROM "aitems"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aitems"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210828083140"]]
+  [1m[36mTRANSACTION (108.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
