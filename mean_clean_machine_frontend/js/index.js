@@ -74,7 +74,7 @@ class Customer{
     openCustomer(){
         clearDiv(mainBox)
         let customerDiv = document.createElement("div")
-        customerDiv.textContent = this.first_name + this.last_name
+        customerDiv.textContent = this.first_name + " " + this.last_name
         mainBox.appendChild(customerDiv)
     }
 }
