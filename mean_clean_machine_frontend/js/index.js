@@ -9,7 +9,9 @@ let customerListCount = document.getElementsByClassName("list-group-item")
 const cListLeftBtn = document.getElementById("customer-list-btn-left")
 const cListRightBtn = document.getElementById("customer-list-btn-right")
 const mainBox = document.getElementById("main-box")
-const thirdBox = document.getElementById("third-box")
+let orderList = document.getElementById("order-list")
+let formDiv = document.getElementById("form-div")
+let thirdBox = document.getElementById("third-box")
 let placeHolder = 0
 let customersArray = []
 
@@ -68,29 +70,60 @@ class Customer{
         this.phone_number = newPhone
     }
     openCustomer(){
-        clearDiv(mainBox)
+        clearDiv(orderList)
         clearDiv(thirdBox)
-        let customerDiv = document.createElement("div")
-        customerDiv.textContent = this.first_name + " " + this.last_name
-        
-        mainBox.appendChild(customerDiv)
+        clearDiv(formDiv)
+
+        let orderForm = document.createElement("form")
+        let itemNameForm = document.createElement("div")
+        let itemNameFormLabel = document.createElement("label")
+        let itemNameFormSelect = document.createElement("select")
+        itemNameForm.class = "form-group"
+        itemNameFormLabel.textContent = "Garment: "
+        itemNameFormSelect.class = "form-control"
+        const option1 = document.createElement("option")
+        option1.textContent = "Shirt"
+        const option2 = document.createElement("option")
+        option2.textContent = "Jeans"
+        const option3 = document.createElement("option")
+        option3.textContent = "Dress"
+        itemNameFormSelect.appendChild(option1)
+        itemNameFormSelect.appendChild(option2)
+        itemNameFormSelect.appendChild(option3)
+        itemNameForm.appendChild(itemNameFormLabel).appendChild(itemNameFormSelect)
+        orderForm.appendChild(itemNameForm)
+        formDiv.appendChild(orderForm)
+
+        Order.getOrders(this)
     }
 }
 
 class Order{
-    constructor(id, customer_id, price){
+    constructor(id, customer_id, price, item){
         this.id = id
         this.customer_id = customer_id
         this.price = price
+        this.item = item
     }
     static getOrders(customer){
-        fetch(`${BASE_URL}/${customer.id}/orders`)
+        fetch(`${BASE_URL}/customers/${customer.id}/orders`)
         .then(response => response.json())
         .then(data => {
             let customerOrders = data.map(dbOrder => {
-                return new Order(dbOrder.id, dbOrder.customer_id, dbOrder.price) 
+                if (dbOrder != undefined){
+                return new Order(dbOrder.id, dbOrder.customer_id, dbOrder.price, dbOrder.item)
+                } 
             })
             return customerOrders
+        })
+        .then(orders => {
+            let customerDiv = document.getElementById("open-name")
+            customerDiv.textContent = customer.first_name + " " + customer.last_name
+            for (let i = 0; i < orders.length; i ++){
+                let orderDiv = document.createElement("ul")
+                orderDiv.appendChild(document.createElement("li").textContent(`item: ${orders[i].item} price: ${orders[i].price}`))
+                orderList.appendChild(orderDiv)
+            }
         })
     }
 }

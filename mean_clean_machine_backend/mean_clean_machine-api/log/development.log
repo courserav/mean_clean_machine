@@ -2013,3 +2013,729 @@ Migrating to ChangeColumn (20210828083140)
   [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddItemToOrders (20210829030608)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "orders" ADD "item" varchar[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210829030608"]]
+  [1m[36mTRANSACTION (178.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/customers" for ::1 at 2021-08-28 23:14:21 -0400
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as */*
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.0ms | Allocations: 2329)
+
+
+  
+SyntaxError (/home/luisvera/Development/code/phase/Phase_4/mean_clean_machine/mean_clean_machine_backend/mean_clean_machine-api/app/models/customer.rb:2: syntax error, unexpected ':', expecting end
+    has_many: :orders
+            ^
+/home/luisvera/Development/code/phase/Phase_4/mean_clean_machine/mean_clean_machine_backend/mean_clean_machine-api/app/models/customer.rb:3: syntax error, unexpected ':', expecting end
+    has_many: :items
+            ^):
+  
+app/models/customer.rb:2: syntax error, unexpected ':', expecting end
+app/models/customer.rb:3: syntax error, unexpected ':', expecting end
+app/models/customer.rb:2: syntax error, unexpected ':', expecting end
+app/models/customer.rb:3: syntax error, unexpected ':', expecting end
+app/controllers/customers_controller.rb:3:in `index'
+Started GET "/customers" for ::1 at 2021-08-28 23:16:26 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (1.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 152ms (Views: 0.5ms | ActiveRecord: 5.7ms | Allocations: 11741)
+
+
+Started GET "/56/orders" for ::1 at 2021-08-28 23:16:33 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/56/orders"):
+  
+Started GET "/customers" for ::1 at 2021-08-28 23:24:30 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 4494)
+
+
+Started GET "/56/orders" for ::1 at 2021-08-28 23:24:32 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/56/orders"):
+  
+Started GET "/customers" for ::1 at 2021-08-28 23:26:33 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 28ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 4003)
+
+
+Started GET "/56/orders" for ::1 at 2021-08-28 23:26:34 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/56/orders"):
+  
+Started GET "/customers" for ::1 at 2021-08-28 23:29:39 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 86ms (Views: 0.3ms | ActiveRecord: 24.4ms | Allocations: 10427)
+
+
+Started GET "/56/orders" for ::1 at 2021-08-28 23:29:40 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/56/orders"):
+  
+Started GET "/customers" for ::1 at 2021-08-28 23:31:30 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 81ms (Views: 0.3ms | ActiveRecord: 9.0ms | Allocations: 10289)
+
+
+Started GET "/56/orders" for ::1 at 2021-08-28 23:31:32 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/56/orders"):
+  
+Started GET "/customers" for ::1 at 2021-08-28 23:31:35 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 39ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 3986)
+
+
+Started GET "/56/orders" for ::1 at 2021-08-28 23:31:37 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/56/orders"):
+  
+Started GET "/customers" for ::1 at 2021-08-28 23:33:57 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 55ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 12887)
+
+
+Started GET "/56/orders" for ::1 at 2021-08-28 23:33:58 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/56/orders"):
+  
+Started GET "/customers" for ::1 at 2021-08-28 23:34:04 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 55ms (Views: 0.6ms | ActiveRecord: 0.9ms | Allocations: 4004)
+
+
+Started GET "/56/orders" for ::1 at 2021-08-28 23:34:06 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/56/orders"):
+  
+Started GET "/customers" for ::1 at 2021-08-28 23:35:24 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (1.0ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 3986)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-28 23:35:26 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mCustomer Load (2.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."params" = ? LIMIT ?[0m  [["params", "customer_id"], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:3:in `index'
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 2.8ms | Allocations: 1006)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: customers.params):
+  
+app/controllers/orders_controller.rb:3:in `index'
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeCustomerIdToOrders (20210829033957)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aorders" ("id" integer NOT NULL PRIMARY KEY, "customer_id" varchar DEFAULT NULL, "price" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "item" varchar DEFAULT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "aorders" ("id","customer_id","price","created_at","updated_at","item")
+                     SELECT "id","customer_id","price","created_at","updated_at","item" FROM "orders"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE "orders"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer NOT NULL PRIMARY KEY, "customer_id" integer DEFAULT NULL, "price" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "item" varchar DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("id","customer_id","price","created_at","updated_at","item")
+                     SELECT "id","customer_id","price","created_at","updated_at","item" FROM "aorders"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aorders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210829033957"]]
+  [1m[36mTRANSACTION (178.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/customers" for ::1 at 2021-08-28 23:41:46 -0400
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 96ms (Views: 3.5ms | ActiveRecord: 4.3ms | Allocations: 12928)
+
+
+Started GET "/customers" for ::1 at 2021-08-28 23:41:49 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 30ms (Views: 1.0ms | ActiveRecord: 0.7ms | Allocations: 4005)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-28 23:41:51 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mCustomer Load (1.1ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."params" = ? LIMIT ?[0m  [["params", "customer_id"], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:3:in `index'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.1ms | Allocations: 1007)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: customers.params):
+  
+app/controllers/orders_controller.rb:3:in `index'
+Started GET "/customers" for ::1 at 2021-08-28 23:42:41 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 112ms (Views: 0.2ms | ActiveRecord: 6.1ms | Allocations: 10290)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-28 23:42:44 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 0.0ms | Allocations: 1577)
+
+
+  
+NameError (undefined local variable or method `customer' for #<OrdersController:0x00557d311b2048>
+Did you mean?  customer_url):
+  
+app/controllers/orders_controller.rb:3:in `index'
+Started GET "/customers" for ::1 at 2021-08-28 23:43:36 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 68ms (Views: 0.4ms | ActiveRecord: 3.2ms | Allocations: 10411)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-28 23:43:37 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mCustomer Load (1.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."params" = ? LIMIT ?[0m  [["params", "customer_id"], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:3:in `index'
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 1.2ms | Allocations: 685)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: customers.params):
+  
+app/controllers/orders_controller.rb:3:in `index'
+Started GET "/customers" for ::1 at 2021-08-28 23:44:16 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 122ms (Views: 0.4ms | ActiveRecord: 11.8ms | Allocations: 10193)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-28 23:44:18 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms | Allocations: 1518)
+
+
+  
+NameError (uninitialized constant OrdersController::Orders):
+  
+app/controllers/orders_controller.rb:3:in `index'
+Started GET "/customers" for ::1 at 2021-08-28 23:44:57 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (2.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 116ms (Views: 0.4ms | ActiveRecord: 13.0ms | Allocations: 10274)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-28 23:44:58 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 91ms (Views: 0.6ms | ActiveRecord: 0.6ms | Allocations: 2234)
+
+
+Started GET "/customers" for ::1 at 2021-08-28 23:45:48 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-28 23:45:49 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 2.6ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-28 23:57:40 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 32ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 4495)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-28 23:57:42 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 526)
+
+
+Started GET "/customers/47/orders" for ::1 at 2021-08-28 23:57:47 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"47"}
+  [1m[36mOrder Load (1.8ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 1.8ms | Allocations: 509)
+
+
+Started GET "/customers/53/orders" for ::1 at 2021-08-28 23:57:48 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"53"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-28 23:59:19 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 31ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-28 23:59:22 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
+Started GET "/customers/47/orders" for ::1 at 2021-08-28 23:59:23 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"47"}
+  [1m[36mOrder Load (0.9ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 0.9ms | Allocations: 509)
+
+
+Started GET "/customers/53/orders" for ::1 at 2021-08-28 23:59:24 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"53"}
+  [1m[36mOrder Load (1.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 1.5ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 00:03:24 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.4ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 00:03:26 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 72ms (Views: 4.6ms | ActiveRecord: 0.5ms | Allocations: 513)
+
+
+Started GET "/customers/47/orders" for ::1 at 2021-08-29 00:03:27 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"47"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 13ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 509)
+
+
+Started GET "/customers/53/orders" for ::1 at 2021-08-29 00:03:29 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"53"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 00:04:49 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.4ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 00:04:51 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (2.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 16ms (Views: 0.5ms | ActiveRecord: 2.5ms | Allocations: 509)
+
+
+Started GET "/customers/47/orders" for ::1 at 2021-08-29 00:04:52 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"47"}
+  [1m[36mOrder Load (1.9ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 509)
+
+
+Started GET "/customers/53/orders" for ::1 at 2021-08-29 00:04:53 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"53"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
+Started GET "/customers/60/orders" for ::1 at 2021-08-29 00:04:55 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"60"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
+Started GET "/customers/60/orders" for ::1 at 2021-08-29 00:04:55 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"60"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
+Started GET "/customers/45/orders" for ::1 at 2021-08-29 00:04:57 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"45"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 00:09:04 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 24ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 00:09:05 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 509)
+
+
+Started GET "/customers/47/orders" for ::1 at 2021-08-29 00:09:07 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"47"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
+Started GET "/customers/53/orders" for ::1 at 2021-08-29 00:09:08 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"53"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
+Started GET "/customers/60/orders" for ::1 at 2021-08-29 00:09:09 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"60"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 509)
+
+
+Started GET "/customers/53/orders" for ::1 at 2021-08-29 00:09:10 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"53"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 00:39:35 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (1.4ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 38ms (Views: 1.4ms | ActiveRecord: 2.5ms | Allocations: 4495)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 00:41:55 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 24ms (Views: 1.6ms | ActiveRecord: 0.6ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 00:43:04 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 28ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 00:43:51 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 30ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 00:43:51 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 526)
+
+
+Started GET "/customers/47/orders" for ::1 at 2021-08-29 00:43:53 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"47"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
+Started GET "/customers/60/orders" for ::1 at 2021-08-29 00:44:13 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"60"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 00:48:02 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 00:48:03 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 509)
+
+
+Started GET "/customers/53/orders" for ::1 at 2021-08-29 00:48:08 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"53"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 509)
+
+
+Started GET "/customers/60/orders" for ::1 at 2021-08-29 00:48:09 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"60"}
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 0.6ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:03:14 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (1.0ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 38ms (Views: 0.4ms | ActiveRecord: 2.0ms | Allocations: 4495)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 01:03:15 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 526)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:07:28 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 19ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 01:07:28 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:08:04 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 27ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 01:08:04 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:09:10 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 3987)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:09:44 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 46ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 3988)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:16:47 -0400
+Processing by CustomersController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+  [1m[36mCustomer Load (1.2ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 43ms (Views: 1.2ms | ActiveRecord: 2.2ms | Allocations: 4495)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 01:16:47 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 529)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:16:58 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 01:16:59 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:17:18 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 37ms (Views: 0.7ms | ActiveRecord: 0.8ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 01:17:18 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 2.2ms | ActiveRecord: 0.7ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:17:42 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.6ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 01:17:43 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 509)
+
+
+Started GET "/customers" for ::1 at 2021-08-29 01:18:02 -0400
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.9ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 66ms (Views: 0.7ms | ActiveRecord: 0.9ms | Allocations: 3987)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 01:18:07 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 509)
+
+
+Started GET "/customers/47/orders" for ::1 at 2021-08-29 01:18:32 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"47"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 509)
+
+
+Started GET "/customers/56/orders" for ::1 at 2021-08-29 01:18:33 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"id"=>"56"}
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  ↳ app/controllers/orders_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 509)
+
+
