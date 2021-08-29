@@ -16,6 +16,7 @@ let updateForm = document.getElementById("update-order-form")
 updateForm.style.display = "none"
 let placeHolder = 0
 let customersArray = []
+let currentOrder = "none"
 
 class Customer{
     constructor(id, firstName, lastName, email, phone){
@@ -74,6 +75,8 @@ class Customer{
     openCustomer(){
         clearDiv(orderList)
         clearDiv(formDiv)
+        let currentCustomer = this
+
         updateForm.style.display = "none"
 
         let orderForm = document.createElement("form")
@@ -103,7 +106,6 @@ class Customer{
         submitOrder.type = "submit"
         submitOrder.class = "btn btn-primary"
         submitOrder.textContent = "Submit"
-        let currentCustomer = this
         submitOrder.addEventListener('click', function() {
             let newOrder = new Order(parseInt(currentCustomer.id), parseInt(itemNameFormPrice.value), itemNameFormSelect.value)
             newOrder.postOrder(currentCustomer)
@@ -138,7 +140,8 @@ class Order{
         fetch(`${CUSTOMER_URL}/${customer.id}/orders`)
         .then(response => response.json())
         .then(data => {
-            let customerOrders = data.map(dbOrder => {
+            let customerOrders = []
+            customerOrders = data.map(dbOrder => {
                 if (dbOrder != undefined){
                 return new Order(dbOrder.customer_id, dbOrder.price, dbOrder.item, dbOrder.id)
                 } 
@@ -153,8 +156,8 @@ class Order{
                 let orderDiv = document.createElement("li")
                 orderDiv.textContent = `item: ${orders[i].item} price: ${orders[i].price}`
                 orderDiv.className = "list-group-item list-group-item-action"
-                let currentOrder = orders[i]
                 orderDiv.addEventListener("click", function(){
+                    currentOrder = orders[i]
                     currentOrder.updateOrder(customer)
                 })
                 orderList.appendChild(orderDiv)
@@ -184,7 +187,7 @@ class Order{
         let updatePrice = document.getElementById("update-price")
         let updateGarment = document.getElementById("update-garment")
         let updateButton = document.getElementById("update-button")
-        let updateOrder = this
+        currentOrder = this
         updateGarment.addEventListener("change", function() {
             if (this.value == "Shirt" || this.value == "Pants"){
                 updatePrice.value = "10.00"
@@ -194,22 +197,22 @@ class Order{
             }
         }, false)
         updateButton.addEventListener("click", function() {
-            updateOrder.item = updateGarment.value
-            updateOrder.price = updatePrice.value
+            currentOrder.item = updateGarment.value
+            currentOrder.price = updatePrice.value
 
-            fetch(`${CUSTOMER_URL}/${updateOrder.customer_id}/orders/${updateOrder.id}`, {
-                method: 'PUT',
+            fetch(`${CUSTOMER_URL}/${currentOrder.customer_id}/orders/${currentOrder.id}`, {
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({
-                    price: updateOrder.price,
-                    item: updateOrder.item
+                    price: currentOrder.price,
+                    item: currentOrder.item
                 })
             })
             .then(response => response.json())
-            .then((e) => {
+            .then(function() {
                 Order.getOrders(customer)
             })
         })
