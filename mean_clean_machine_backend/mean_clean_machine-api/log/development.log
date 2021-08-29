@@ -12174,3 +12174,96 @@ Processing by OrdersController#index as */*
 Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 1426)
 
 
+Started GET "/customers" for ::1 at 2021-08-29 10:30:02 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CustomersController#index as */*
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers"[0m
+  ↳ app/controllers/customers_controller.rb:4:in `index'
+Completed 200 OK in 74ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 12957)
+
+
+Started GET "/customers/10/orders" for ::1 at 2021-08-29 10:30:04 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"customer_id"=>"10"}
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:3:in `index'
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."customer_id" = ?[0m  [["customer_id", 10]]
+  ↳ app/controllers/orders_controller.rb:5:in `index'
+Completed 200 OK in 60ms (Views: 0.3ms | ActiveRecord: 3.7ms | Allocations: 8245)
+
+
+Started PATCH "/customers/10/orders/4" for ::1 at 2021-08-29 10:30:06 -0400
+Processing by OrdersController#update as JSON
+  Parameters: {"price"=>"10.00", "item"=>"Pants", "customer_id"=>"10", "id"=>"4", "order"=>{"price"=>"10.00", "item"=>"Pants"}}
+  [1m[36mCustomer Load (0.3ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:23:in `update'
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."customer_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["customer_id", 10], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:24:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:25:in `update'
+  [1m[36mOrder Update (1.1ms)[0m  [1m[33mUPDATE "orders" SET "price" = ?, "updated_at" = ?, "item" = ? WHERE "orders"."id" = ?[0m  [["price", 10], ["updated_at", "2021-08-29 14:30:06.905771"], ["item", "Pants"], ["id", 4]]
+  ↳ app/controllers/orders_controller.rb:25:in `update'
+  [1m[36mTRANSACTION (138.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:25:in `update'
+Completed 200 OK in 194ms (Views: 0.4ms | ActiveRecord: 140.9ms | Allocations: 5896)
+
+
+Started GET "/customers/10/orders" for ::1 at 2021-08-29 10:30:07 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"customer_id"=>"10"}
+  [1m[36mCustomer Load (0.8ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:3:in `index'
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."customer_id" = ?[0m  [["customer_id", 10]]
+  ↳ app/controllers/orders_controller.rb:5:in `index'
+Completed 200 OK in 24ms (Views: 2.5ms | ActiveRecord: 1.3ms | Allocations: 1309)
+
+
+Started PATCH "/customers/10/orders/3" for ::1 at 2021-08-29 10:30:10 -0400
+Processing by OrdersController#update as JSON
+  Parameters: {"price"=>"15.00", "item"=>"Dress", "customer_id"=>"10", "id"=>"3", "order"=>{"price"=>"15.00", "item"=>"Dress"}}
+  [1m[36mCustomer Load (0.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:23:in `update'
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."customer_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["customer_id", 10], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:24:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:25:in `update'
+Started PATCH "/customers/10/orders/3" for ::1 at 2021-08-29 10:30:10 -0400
+  [1m[36mOrder Update (3.4ms)[0m  [1m[33mUPDATE "orders" SET "price" = ?, "updated_at" = ?, "item" = ? WHERE "orders"."id" = ?[0m  [["price", 15], ["updated_at", "2021-08-29 14:30:10.685093"], ["item", "Dress"], ["id", 3]]
+  ↳ app/controllers/orders_controller.rb:25:in `update'
+  [1m[36mTRANSACTION (141.4ms)[0m  [1m[36mcommit transaction[0m
+Processing by OrdersController#update as JSON
+  ↳ app/controllers/orders_controller.rb:25:in `update'
+  Parameters: {"price"=>"15.00", "item"=>"Dress", "customer_id"=>"10", "id"=>"3", "order"=>{"price"=>"15.00", "item"=>"Dress"}}
+Completed 200 OK in 240ms (Views: 0.4ms | ActiveRecord: 146.0ms | Allocations: 6139)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:23:in `update'
+  [1m[36mCustomer Load (0.7ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:23:in `update'
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."customer_id" = ? AND "orders"."id" = ? LIMIT ?[0m  [["customer_id", 10], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:24:in `update'
+Started GET "/customers/10/orders" for ::1 at 2021-08-29 10:30:10 -0400
+Completed 200 OK in 37ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 2586)
+
+
+Processing by OrdersController#index as */*
+  Parameters: {"customer_id"=>"10"}
+  [1m[36mCustomer Load (4.5ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:3:in `index'
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."customer_id" = ?[0m  [["customer_id", 10]]
+  ↳ app/controllers/orders_controller.rb:5:in `index'
+Completed 200 OK in 24ms (Views: 0.5ms | ActiveRecord: 5.1ms | Allocations: 1325)
+
+
+Started GET "/customers/10/orders" for ::1 at 2021-08-29 10:30:10 -0400
+Processing by OrdersController#index as */*
+  Parameters: {"customer_id"=>"10"}
+  [1m[36mCustomer Load (0.4ms)[0m  [1m[34mSELECT "customers".* FROM "customers" WHERE "customers"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:3:in `index'
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."customer_id" = ?[0m  [["customer_id", 10]]
+  ↳ app/controllers/orders_controller.rb:5:in `index'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 1305)
+
+
