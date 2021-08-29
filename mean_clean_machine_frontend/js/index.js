@@ -71,27 +71,53 @@ class Customer{
     }
     openCustomer(){
         clearDiv(orderList)
-        clearDiv(thirdBox)
         clearDiv(formDiv)
 
         let orderForm = document.createElement("form")
         let itemNameForm = document.createElement("div")
         let itemNameFormLabel = document.createElement("label")
         let itemNameFormSelect = document.createElement("select")
+        let itemNameFormPrice = document.createElement("input")
         itemNameForm.class = "form-group"
         itemNameFormLabel.textContent = "Garment: "
-        itemNameFormSelect.class = "form-control"
-        const option1 = document.createElement("option")
+        itemNameFormSelect.class, itemNameFormPrice.class = "form-control"
+        itemNameFormPrice.placeholder = "Price"
+        itemNameFormPrice.type = "text"
+        let option1 = document.createElement("option")
         option1.textContent = "Shirt"
-        const option2 = document.createElement("option")
-        option2.textContent = "Jeans"
-        const option3 = document.createElement("option")
+        option1.value = "Shirt"
+        let option2 = document.createElement("option")
+        option2.textContent = "Pants"
+        option2.value = "Pants"
+        let option3 = document.createElement("option")
         option3.textContent = "Dress"
+        option3.value = "Dress"
         itemNameFormSelect.appendChild(option1)
         itemNameFormSelect.appendChild(option2)
         itemNameFormSelect.appendChild(option3)
         itemNameForm.appendChild(itemNameFormLabel).appendChild(itemNameFormSelect)
+        let submitOrder = document.createElement("button")
+        submitOrder.type = "submit"
+        submitOrder.class = "btn btn-primary"
+        submitOrder.textContent = "Submit"
+        let currentCustomer = this
+        submitOrder.addEventListener('click', function() {
+            let newOrder = new Order(parseInt(currentCustomer.id), parseInt(itemNameFormPrice.value), itemNameFormSelect.value)
+            newOrder.postOrder(currentCustomer)
+        })
+        let options = [option1, option2, option3]
+        itemNameFormSelect.addEventListener("change", function() {
+            if (this.value == "Shirt" || this.value == "Pants"){
+                itemNameFormPrice.placeholder = "10.00"
+            }
+            else if (this.value == "Dress"){
+                itemNameFormPrice.placeholder = "15.00"
+            }
+
+        }, false)
         orderForm.appendChild(itemNameForm)
+        orderForm.appendChild(itemNameFormPrice)
+        orderForm.appendChild(submitOrder)
         formDiv.appendChild(orderForm)
 
         Order.getOrders(this)
@@ -99,14 +125,14 @@ class Customer{
 }
 
 class Order{
-    constructor(id, customer_id, price, item){
+    constructor(customer_id, price, item, id = "none"){
         this.id = id
         this.customer_id = customer_id
         this.price = price
         this.item = item
     }
     static getOrders(customer){
-        fetch(`${BASE_URL}/customers/${customer.id}/orders`)
+        fetch(`${CUSTOMER_URL}/${customer.id}/orders`)
         .then(response => response.json())
         .then(data => {
             let customerOrders = data.map(dbOrder => {
@@ -120,10 +146,28 @@ class Order{
             let customerDiv = document.getElementById("open-name")
             customerDiv.textContent = customer.first_name + " " + customer.last_name
             for (let i = 0; i < orders.length; i ++){
-                let orderDiv = document.createElement("ul")
-                orderDiv.appendChild(document.createElement("li").textContent(`item: ${orders[i].item} price: ${orders[i].price}`))
+                let orderDiv = document.createElement("li")
+                orderDiv.textContent = `item: ${orders[i].item} price: ${orders[i].price}`
                 orderList.appendChild(orderDiv)
             }
+        })
+    }
+    postOrder(customer){
+        fetch(`${CUSTOMER_URL}/${customer.id}/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                customer_id: this.customer_id,
+                price: this.price,
+                item: this.item
+            })
+        })
+        .then(response => response.json())
+        .then((e) => {
+            Order.getOrders(customer)
         })
     }
 }

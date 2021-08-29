@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
     end
 
     def show
-        customer = Customer.find_by(params: [:id])
+        customer = Customer.find_by(params[:id])
         render json: customer.to_json
     end
 end
