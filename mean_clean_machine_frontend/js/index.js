@@ -12,6 +12,8 @@ const mainBox = document.getElementById("main-box")
 let orderList = document.getElementById("order-list")
 let formDiv = document.getElementById("form-div")
 let thirdBox = document.getElementById("third-box")
+let updateForm = document.getElementById("update-order-form")
+updateForm.style.display = "none"
 let placeHolder = 0
 let customersArray = []
 
@@ -72,6 +74,7 @@ class Customer{
     openCustomer(){
         clearDiv(orderList)
         clearDiv(formDiv)
+        updateForm.style.display = "none"
 
         let orderForm = document.createElement("form")
         let itemNameForm = document.createElement("div")
@@ -108,10 +111,10 @@ class Customer{
         let options = [option1, option2, option3]
         itemNameFormSelect.addEventListener("change", function() {
             if (this.value == "Shirt" || this.value == "Pants"){
-                itemNameFormPrice.placeholder = "10.00"
+                itemNameFormPrice.value = "10.00"
             }
             else if (this.value == "Dress"){
-                itemNameFormPrice.placeholder = "15.00"
+                itemNameFormPrice.value = "15.00"
             }
 
         }, false)
@@ -120,16 +123,16 @@ class Customer{
         orderForm.appendChild(submitOrder)
         formDiv.appendChild(orderForm)
 
-        Order.getOrders(this)
+        Order.getOrders(currentCustomer)
     }
 }
 
 class Order{
     constructor(customer_id, price, item, id = "none"){
-        this.id = id
         this.customer_id = customer_id
         this.price = price
         this.item = item
+        this.id = id
     }
     static getOrders(customer){
         fetch(`${CUSTOMER_URL}/${customer.id}/orders`)
@@ -137,23 +140,29 @@ class Order{
         .then(data => {
             let customerOrders = data.map(dbOrder => {
                 if (dbOrder != undefined){
-                return new Order(dbOrder.id, dbOrder.customer_id, dbOrder.price, dbOrder.item)
+                return new Order(dbOrder.customer_id, dbOrder.price, dbOrder.item, dbOrder.id)
                 } 
             })
             return customerOrders
         })
         .then(orders => {
+            clearDiv(orderList)
             let customerDiv = document.getElementById("open-name")
             customerDiv.textContent = customer.first_name + " " + customer.last_name
             for (let i = 0; i < orders.length; i ++){
                 let orderDiv = document.createElement("li")
                 orderDiv.textContent = `item: ${orders[i].item} price: ${orders[i].price}`
+                orderDiv.className = "list-group-item list-group-item-action"
+                let currentOrder = orders[i]
+                orderDiv.addEventListener("click", function(){
+                    currentOrder.updateOrder(customer)
+                })
                 orderList.appendChild(orderDiv)
             }
         })
     }
     postOrder(customer){
-        fetch(`${CUSTOMER_URL}/${customer.id}/orders`, {
+        fetch(`${CUSTOMER_URL}/${this.customer_id}/orders`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -170,11 +179,43 @@ class Order{
             Order.getOrders(customer)
         })
     }
+    updateOrder(customer){
+        updateForm.style.display = "initial"
+        let updatePrice = document.getElementById("update-price")
+        let updateGarment = document.getElementById("update-garment")
+        let updateButton = document.getElementById("update-button")
+        let updateOrder = this
+        updateGarment.addEventListener("change", function() {
+            if (this.value == "Shirt" || this.value == "Pants"){
+                updatePrice.value = "10.00"
+            }
+            else if (this.value == "Dress"){
+                updatePrice.value = "15.00"
+            }
+        }, false)
+        updateButton.addEventListener("click", function() {
+            updateOrder.item = updateGarment.value
+            updateOrder.price = updatePrice.value
+
+            fetch(`${CUSTOMER_URL}/${updateOrder.customer_id}/orders/${updateOrder.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    price: updateOrder.price,
+                    item: updateOrder.item
+                })
+            })
+            .then(response => response.json())
+            .then((e) => {
+                Order.getOrders(customer)
+            })
+        })
+    }
 }
 
-class Item{
-
-}
 
 cListLeftBtn.addEventListener('click', (e)=>{
     scrollCustomers('*left')

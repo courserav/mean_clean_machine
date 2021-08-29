@@ -53,18 +53,19 @@
 
                 </ul>
             </div>
-            <div class="row justify-content-start" id="row-main-box-list-btns">
-                <div class="col-4" id="col-main-list-btn-left" >
-                    <button class="btn btn-primary w-100" id="main-list-btn-left">←</button>
-                </div>
-                <div class="col-4" id="col-main-list-btn-right">
-                    <button class="btn btn-primary w-100" id="main-list-btn-right">→</button>
-                </div>
-            </div>
         </div>
 
         <div class="container" id="third-box">
-            <div>Fill-in area</div>
+            <form id="update-order-form">
+                    <label for="update-garment">Garment: </label>
+                    <select class="form-control" id="update-garment">
+                      <option value="Shirt">Shirt</option>
+                      <option value="Pants">Pants</option>
+                      <option value="Dress">Dress</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="Price" id="update-price">
+                    <button class="btn btn-primary" id="update-button">Update</button>
+            </form>
         </div>
 
         </div>
